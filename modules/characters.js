@@ -50,11 +50,12 @@ function charactersHandler(request, response) {
 class Characters {
     constructor(obj) {
         this.name = obj.name;
-        this.gender = obj.appearance.gender;
-        this.race = obj.appearance.race
+        this.appearance = obj.appearance;
         this.imageUrl = obj.image.url;
         this.publisher = obj.biography.publisher;
         this.aliases = obj.biography.aliases;
+        this.powerstats = obj.powerstats;
+        this.relatives = obj.connections.relatives;
     }
 
 }

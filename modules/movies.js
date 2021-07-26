@@ -35,10 +35,10 @@ function moviesHandler(request, response) {
 class Movies {
     constructor(obj) {
         this.title = obj.name;
-        this.release_date = obj.release_date;
-        this.image_url = obj.image.original_url;
-        this.rating = obj.rating;
         this.runtime = `${obj.runtime} mins`;
+        this.rating = obj.rating;
+        this.image_url = obj.image.original_url;
+        this.release_date = obj.release_date;
     }
 
 }

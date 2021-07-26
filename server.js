@@ -24,6 +24,7 @@ const charactersHandler = require('./modules/characters');
 const Profile = require('./modules/Profile');
 
 const getProfileData = require('./modules/email');
+const dbHandlers = require('./modules/dbHandlers');
 
 const PORT = process.env.PORT || 3002;
 
@@ -33,41 +34,33 @@ mongoose.connect(`${process.env.MONGODB}`, { useNewUrlParser: true, useUnifiedTo
 
 function seedUserCollection() {
 
-    const sondos = new Profile({
-        email: 'sndjehad@gmail.com',
+    const tariq = new Profile({
+        email: 'taariq.zyad@gmail.com',
         movies: [
             {
-                name: 'test',
-                runtime: '',
-                rating: '',
-                img: '',
-                release_date: '',
+                name: 'test6',
+                img: 'test6',
             },
 
         ]
         , comic: [
             {
-                name: '',
-                description: '',
-                img: '',
+                name: 'test6',
+                img: 'test6',
             },
 
         ]
         , characters: [
             {
 
-                name: '',
-                gender: '',
-                race: '',
-                img: '',
-                publisher: '',
-                aliases: '',
+                name: 'test6',
+                img: 'test6',
 
             },
 
         ]
     });
-    sondos.save();
+    tariq.save();
 };
 // seedUserCollection();
 
@@ -102,6 +95,14 @@ server.get('/characters', charactersHandler);
 // http://localhost:3001/profile/?email=
 server.get('/profile', getProfileData);
 
+// http://localhost:3001/post, postFormData
+server.post('/post', dbHandlers.postHandler);
+
+//http://localhost:3001/delete/${id}?email=${this.props.auth0.user.email}&type=${comic}
+server.delete('/delete/:id', dbHandlers.deleteHandler)
+
+//http://localhost:3001/put/${this.state.id}, putFormData
+server.put('/put/:id', dbHandlers.updateHandler)
 
 ///////////////////
 
