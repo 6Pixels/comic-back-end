@@ -92,7 +92,7 @@ utilities.deleteHandler = function (request, response) {
                 console.log('after deleting', items[0].movies)
 
                 items[0].save();
-                response.status(200).send(items[0].movies)
+                response.status(200).send(items[0])
             }
 
         })
@@ -112,7 +112,7 @@ utilities.deleteHandler = function (request, response) {
                 console.log('after deleting', items[0].characters)
 
                 items[0].save();
-                response.status(200).send(items[0].characters)
+                response.status(200).send(items[0])
             }
 
         })
@@ -132,7 +132,7 @@ utilities.deleteHandler = function (request, response) {
                 console.log('after deleting', items[0].comic)
 
                 items[0].save();
-                response.status(200).send(items[0].comic)
+                response.status(200).send(items[0])
             }
 
         })
@@ -147,7 +147,7 @@ utilities.updateHandler = function (request, response) {
     let id = request.params.id;
 
     if (request.body.type === 'movie') {
-        let { email, movieName, movieImg } = request.body;
+        let { email, name, img } = request.body;
         User.findOne({ email: email }, (error, items) => {
             if (error) {
                 response.status(500).send('NOT FOUND')
@@ -159,8 +159,8 @@ utilities.updateHandler = function (request, response) {
 
                     if (movie._id.toString() === id) {
 
-                        movie.name = movieName;
-                        movie.img = movieImg;
+                        movie.name = name;
+                        movie.img = img;
 
                         return movie;
                     }
@@ -171,13 +171,13 @@ utilities.updateHandler = function (request, response) {
 
                 items.save();
 
-                response.status(200).send(items.movies);
+                response.status(200).send(items);
 
             }
 
         })
     } else if (request.body.type === 'character') {
-        let { email, characterName, characterImg, } = request.body;
+        let { email, name, img, } = request.body;
         User.findOne({ email: email }, (error, items) => {
             if (error) {
                 response.status(500).send('NOT FOUND')
@@ -189,8 +189,8 @@ utilities.updateHandler = function (request, response) {
 
                     if (character._id.toString() === id) {
 
-                        character.name = characterName;
-                        character.img = characterImg;
+                        character.name = name;
+                        character.img = img;
 
                         return character;
                     }
@@ -201,13 +201,13 @@ utilities.updateHandler = function (request, response) {
 
                 items.save();
 
-                response.status(200).send(items.characters);
+                response.status(200).send(items);
 
             }
 
         })
     } else if (request.body.type === 'comic') {
-        let { email, comicName, comicImg, } = request.body;
+        let { email, name, img, } = request.body;
         User.findOne({ email: email }, (error, items) => {
             if (error) {
                 response.status(500).send('NOT FOUND')
@@ -219,8 +219,8 @@ utilities.updateHandler = function (request, response) {
 
                     if (comic._id.toString() === id) {
 
-                        comic.name = comicName;
-                        comic.img = comicImg;
+                        comic.name = name;
+                        comic.img = img;
 
                         return comic;
                     }
@@ -231,7 +231,7 @@ utilities.updateHandler = function (request, response) {
 
                 items.save();
 
-                response.status(200).send(items.comic);
+                response.status(200).send(items);
 
             }
 
