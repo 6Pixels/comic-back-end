@@ -16,7 +16,7 @@ function comicHandler(request, response) {
     } else {
         sQuery = 'allComic';
 
-        url = `https://comicvine.gamespot.com/api/issues/?api_key=${process.env.COMICVINE_KEY}&sort=id:desc&format=json`;
+        url = `https://comicvine.gamespot.com/api/issues/?api_key=${process.env.COMICVINE_KEY}&sort=id:asc&format=json`;
     };
 
 
